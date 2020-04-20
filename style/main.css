@@ -8,6 +8,8 @@ and open the template in the editor.
     Author     : Exsofth
 */
 
+/**/
+
 /* Style buttons */
 .btn {
   background-color: DodgerBlue; /* Blue background */
@@ -21,4 +23,12 @@ and open the template in the editor.
 /* Darker background on mouse-over */
 .btn:hover {
   background-color: RoyalBlue;
+}
+
+/*footer design*/
+#footer{
+    text-align: center;
+    padding: 7px;
+    background: #bee5eb;
+    
 }
