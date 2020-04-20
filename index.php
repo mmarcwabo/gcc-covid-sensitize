@@ -1,6 +1,7 @@
 <?php
 session_start();
-        ?>
+include_once './libs/config.php';
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,18 +9,31 @@ session_start();
         <link rel="stylesheet" href="style/bootstrap.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Add icon library -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="style/main.css">
     </head>
     <body style="background-color: #eee;">
         <div class="container">
-
             <div class="page-header" style="text-align: center; padding: 7px;">
-                <h1>GCC dit Stop Covid-19</h1>      
+            <h1>GCC dit Stop Covid-19</h1>      
             </div> 
             <div style="text-align: center; padding: 7px;">
                 <img src="img/logo-gcc.jpg" class="img-circle" alt="Goma Cycling Club" height="211" width="211">  
             </div>         
             <h2 class="title">Aidez-nous à sensibiliser pour limiter la propagation covid-19</h2>
-
+            <?php if (isset($_SESSION['current_image'])) { ?>
+                
+                    <br/>
+                    <div class="form-group" style="text-align: center; padding: 7px;">
+                        <a href="<?php echo URL.$_SESSION['current_image']; ?>" download>
+                            <button class="btn btn-success">
+                                <i class="fa fa-download"></i> Télecharger ma carte de sensibilisation ici
+                            </button>
+                        </a>
+                    </div>
+                
+            <?php } ?>
             <form name="getGccCustom" action="image.php" method="POST" enctype="multipart/form-data">
                 <div id="message-to-download"></div>
                 <div class="form-group">
@@ -34,22 +48,9 @@ session_start();
                     <label>Ajouter votre photo : </label>
                     <input type="file" class="form-control" name="photo" />
                 </div>
-                <button type="submit" class="btn btn-success">Obtenir ma carte de sensibilisation</button>
-                
-            </form>
-            <form>
-            <br/>
-            <div class="form-group">
-            <a href="<?php echo $_SESSION['current_image'] ?>" download>
-                <button class="btn btn btn-success">
-                    <i class="fa fa-download"></i> Download
-                </button>
-            </a>
-            </div>
+                <button type="submit" class="btn btn-success">Obtenir ma carte de sensibilisation</button>          
             </form>
         </div>
-
-
         <script src="style/bootstrap.min.js"></script>
     </body>
 </html>
